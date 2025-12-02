@@ -1,5 +1,10 @@
 pipeline {
-     agent any
+     agent {
+          docker {
+            image 'node:20-alpine' // Use a lightweight, stable Node.js image
+            args '-u root'         // Sometimes required for npm permissions in Docker
+        }
+     }
     environment {
         CI = 'true'
     }
